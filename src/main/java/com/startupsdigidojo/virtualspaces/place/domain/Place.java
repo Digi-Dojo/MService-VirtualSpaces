@@ -1,4 +1,4 @@
-package com.startupsdigidojo.virtualspaces.domain;
+package com.startupsdigidojo.virtualspaces.place.domain;
 
 import jakarta.persistence.*;
 

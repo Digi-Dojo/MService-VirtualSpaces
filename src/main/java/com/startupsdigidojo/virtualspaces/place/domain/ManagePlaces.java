@@ -1,0 +1,74 @@
+package com.startupsdigidojo.virtualspaces.place.domain;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+@Service
+public class ManagePlaces {
+
+    private PlaceRepository placeRepository;
+
+    @Autowired
+    public ManagePlaces(PlaceRepository placeRepository) {
+        this.placeRepository = placeRepository;
+    }
+
+    private PlaceTypes validatePlaceType (String type) {
+
+        Optional<PlaceTypes> maybeTypePlace = PlaceTypes.byNameTypeIgnoreCase(type);
+
+        if(maybeTypePlace.isEmpty())
+            throw new IllegalArgumentException("Place type '" + type + "' is not a valid type. " +
+                    "Accepted types are: " + PlaceTypes.getStringValues());
+
+        return maybeTypePlace.get();
+    }
+
+    private Place validatePlace (Long id) {
+
+        Optional<Place> maybePlace = placeRepository.findById(id);
+
+        if(maybePlace.isEmpty())
+            throw new IllegalArgumentException("Place with id '" + id + "' does not exist yet!");
+
+        return maybePlace.get();
+    }
+
+    public Place createPlace(String type, Long startupId) {
+
+        PlaceTypes typePlace = validatePlaceType(type);
+
+        return placeRepository.save(new Place(typePlace, startupId));
+    }
+
+    public Place readPlace(Long id) {
+
+        Place place = validatePlace(id);
+
+        return place;
+
+    }
+
+    public Place updatePlace (Long id, String type, Long startupId) {
+
+        Place place = validatePlace(id);
+
+        PlaceTypes typePlace = validatePlaceType(type);
+
+        place.setType(typePlace);
+        place.setStartupId(startupId);
+
+        return placeRepository.save(place);
+    }
+
+    public Place deletePlace (Long id) {
+
+        Place place = validatePlace(id);
+
+        placeRepository.delete(place);
+
+        return place;
+    }
+}

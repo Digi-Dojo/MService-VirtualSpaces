@@ -15,6 +15,7 @@ public class ManagePlaces {
         this.placeRepository = placeRepository;
     }
 
+    //checks that the type is a valid type among those specified by the PlaceTypes class
     private PlaceTypes validatePlaceType (String type) {
 
         Optional<PlaceTypes> maybeTypePlace = PlaceTypes.byNameTypeIgnoreCase(type);
@@ -26,6 +27,7 @@ public class ManagePlaces {
         return maybeTypePlace.get();
     }
 
+    //checks that the given id takes to a valid entity Place
     private Place validatePlace (Long id) {
 
         Optional<Place> maybePlace = placeRepository.findById(id);

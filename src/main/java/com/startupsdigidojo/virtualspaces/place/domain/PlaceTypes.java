@@ -2,6 +2,7 @@ package com.startupsdigidojo.virtualspaces.place.domain;
 
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public enum PlaceTypes {
 
@@ -26,6 +27,6 @@ public enum PlaceTypes {
 
     //returns all the possible values accepted by this enum class
     public static String getStringValues() {
-        return values().toString();
+        return Arrays.toString(values());
     }
 }

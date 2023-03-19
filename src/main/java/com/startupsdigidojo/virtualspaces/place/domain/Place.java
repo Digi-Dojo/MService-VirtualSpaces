@@ -26,6 +26,10 @@ public class Place {
         this.startupId = startupId;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public PlaceTypes getType() {
         return type;
     }

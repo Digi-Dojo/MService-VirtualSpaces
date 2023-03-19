@@ -22,7 +22,7 @@ public enum PlaceTypes {
 
     //checks ignoring case that the name given is one of the possible values listed by this enum class
     public static Optional<PlaceTypes> byNameTypeIgnoreCase(String givenName) {
-        return Arrays.stream(values()).filter(it -> it.name().equalsIgnoreCase(givenName)).findAny();
+        return Arrays.stream(values()).filter(it -> it.fullnameType.equalsIgnoreCase(givenName)).findAny();
     }
 
     //returns all the possible values accepted by this enum class

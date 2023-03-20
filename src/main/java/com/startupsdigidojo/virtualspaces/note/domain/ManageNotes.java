@@ -4,6 +4,9 @@ import com.startupsdigidojo.virtualspaces.place.domain.ManagePlaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Optional;
 
@@ -46,6 +49,15 @@ public class ManageNotes {
     }
 
     private Date validateDate(String date){
+        Date date1;
+
+
+        try {
+             date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        return date1;
 
     }
 
@@ -57,7 +69,7 @@ public class ManageNotes {
 
         Date date1 = validateDate(date);
 
-        return noteRepository.save(new Note(text,status,placeId,date1));
+        return noteRepository.save(new Note(text,placeId,date1,status));
     }
 
     public Note readNote(Long id){

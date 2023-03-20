@@ -20,28 +20,34 @@ public class Note {
 
     private Date date;
 
-    private NoteStatus status;
+    private boolean statusAdded;
 
     public Note () {}
 
-    public Note(String text, Long placeId, Date date, NoteStatus status) {
+    public Note(String text, Long placeId, Date date, boolean statusAdded) {
         this.text = text;
         this.placeId = placeId;
         this.date = date;
-        this.status = status;
+        this.statusAdded = statusAdded;
     }
 
-    public Note(Long id, String text, Long placeId, Date date, NoteStatus status) {
+    public Note(Long id, String text, Long placeId, Date date, boolean statusAdded) {
         this.id = id;
         this.text = text;
         this.placeId = placeId;
         this.date = date;
-        this.status = status;
+        this.statusAdded = statusAdded;
     }
 
-    public NoteStatus getStatus() {
-        return this.status;
+    public Long getId() {
+        return id;
     }
+
+    public boolean getStatusAdded() {
+        return this.statusAdded;
+    }
+
+    public void setStatusAdded (boolean statusAdded) { this.statusAdded = statusAdded; }
 
     public Long getPlaceId() {
         return placeId;
@@ -49,10 +55,6 @@ public class Note {
 
     public void setPlaceId(Long placeId) {
         this.placeId = placeId;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getText() {

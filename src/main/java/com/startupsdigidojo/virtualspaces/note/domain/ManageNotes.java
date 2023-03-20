@@ -14,20 +14,19 @@ import java.util.Optional;
 public class ManageNotes {
 
     private NoteRepository noteRepository;
+    private final int TEXT_MIN_LENGTH = 1, TEXT_MAX_LENGTH = 100;
 
     @Autowired
     public ManageNotes(NoteRepository noteRepository) {
         this.noteRepository = noteRepository;
     }
 
-    private void validateNote(String text){
+    private void validateTextNote(String text){
         int textToLong = text.length();
 
-        if(textToLong >100 && textToLong < 1)
-            throw new IllegalArgumentException("Text is not valid");
-
-
-
+        if(textToLong > TEXT_MAX_LENGTH || textToLong < TEXT_MIN_LENGTH)
+            throw new IllegalArgumentException("Text length is not valid; It must be long at least " + TEXT_MIN_LENGTH +
+                    "characters and at most " + TEXT_MAX_LENGTH + " characters");
     }
 
 //    private Note validatePlace(Long placeId){
@@ -39,6 +38,7 @@ public class ManageNotes {
 
      //   return maybePlace.get();
  //   }
+
     private Note validateNote(Long id){
         Optional<Note> maybeNote =noteRepository.findById(id);
 
@@ -49,14 +49,15 @@ public class ManageNotes {
     }
 
     private Date validateDate(String date){
-        Date date1;
 
+        Date date1;
 
         try {
              date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
         } catch (ParseException e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException("Date " + date + " is not of the format dd/MM/yyyy");
         }
+
         return date1;
 
     }
@@ -64,7 +65,7 @@ public class ManageNotes {
 
     public Note createNote(String text, boolean status, Long placeId,String date){
 
-        validateNote(text);
+        validateTextNote(text);
         validateNote(placeId);
 
         Date date1 = validateDate(date);
@@ -80,7 +81,7 @@ public class ManageNotes {
 
     public Note updateNote(Long id,String text, long placeId, boolean status){
         Note note = validateNote(id);
-        validateNote(text);
+        validateTextNote(text);
 
         //validatePlace(placeId);
 

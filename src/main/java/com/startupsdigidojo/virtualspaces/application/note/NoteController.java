@@ -1,8 +1,7 @@
-package com.startupsdigidojo.virtualspaces.place.application;
+package com.startupsdigidojo.virtualspaces.application.note;
 
-import com.startupsdigidojo.virtualspaces.note.domain.ManageNotes;
-import com.startupsdigidojo.virtualspaces.note.domain.Note;
-import org.aspectj.weaver.ast.Not;
+import com.startupsdigidojo.virtualspaces.domain.note.ManageNotes;
+import com.startupsdigidojo.virtualspaces.domain.note.Note;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +13,6 @@ public class NoteController {
     private ManageNotes manageNotes;
 
     @Autowired
-
     public NoteController (ManageNotes manageNotes){ this.manageNotes=manageNotes;}
 
     @GetMapping("{id}")
@@ -22,15 +20,17 @@ public class NoteController {
 
     @PostMapping
     public Note createNewNote(@RequestBody CreateNoteDTO dto){
-        return manageNotes.createNote(dto.getText(),dto.getStatus(),dto.getPlaceId(),dto.getDate());
+        return manageNotes.createNote(dto.getText(),dto.getStatusAdded(),dto.getPlaceId(),dto.getDate());
     }
     @PostMapping
     public Note updateNote(@RequestBody UpdateNoteDTO dto){
-        return manageNotes.updateNote(dto.getId(),dto.getText(),dto.getPlaceId(),dto.getStatus());
+        return manageNotes.updateNote(dto.getId(),dto.getText(),dto.getPlaceId(),dto.getStatusAdded());
     }
 
     @DeleteMapping("{id}")
-    public Note deleteNote(@PathVariable("id")Long id){return manageNotes.deleteNote(id);};
+    public Note deleteNote(@PathVariable("id")Long id) {
+        return manageNotes.deleteNote(id);
+    };
 
 
 }

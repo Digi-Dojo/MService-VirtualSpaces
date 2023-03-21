@@ -1,8 +1,7 @@
-package com.startupsdigidojo.virtualspaces.place.domain;
+package com.startupsdigidojo.virtualspaces.domain.place;
 
 import java.util.Arrays;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public enum PlaceTypes {
 

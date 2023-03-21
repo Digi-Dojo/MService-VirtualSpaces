@@ -1,21 +1,17 @@
-package com.startupsdigidojo.virtualspaces.place.application;
+package com.startupsdigidojo.virtualspaces.application.note;
 
 public class CreateNoteDTO {
 
     private String text;
-    private boolean status;
-
+    private boolean statusAdded;
     private Long placeId;
     private String date;
-
-
-
 
     public CreateNoteDTO(){}
 
     public CreateNoteDTO(String text, boolean status, Long placeId,String date){
         this.text=text;
-        this.status=status;
+        this.statusAdded =status;
         this.placeId=placeId;
         this.date=date;
     }
@@ -28,12 +24,12 @@ public class CreateNoteDTO {
         this.text = text;
     }
 
-    public boolean getStatus() {
-        return status;
+    public boolean getStatusAdded() {
+        return statusAdded;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setStatusAdded(boolean statusAdded) {
+        this.statusAdded = statusAdded;
     }
 
     public Long getPlaceId() {

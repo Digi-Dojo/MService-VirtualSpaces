@@ -1,4 +1,4 @@
-package com.startupsdigidojo.virtualspaces.note.domain;
+package com.startupsdigidojo.virtualspaces.domain.note;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

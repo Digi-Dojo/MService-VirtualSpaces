@@ -1,6 +1,5 @@
-package com.startupsdigidojo.virtualspaces.note.domain;
+package com.startupsdigidojo.virtualspaces.domain.note;
 
-import com.startupsdigidojo.virtualspaces.place.domain.Place;
 import jakarta.persistence.*;
 
 import java.util.Date;

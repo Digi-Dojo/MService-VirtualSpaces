@@ -1,5 +1,6 @@
 package com.startupsdigidojo.virtualspaces.domain.note;
 
+import com.startupsdigidojo.virtualspaces.domain.place.ManagePlaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +12,14 @@ import java.util.Optional;
 @Service
 public class ManageNotes {
 
+    private ManagePlaces managePlaces;
     private NoteRepository noteRepository;
     private final int TEXT_MIN_LENGTH = 1, TEXT_MAX_LENGTH = 100;
 
     @Autowired
-    public ManageNotes(NoteRepository noteRepository) {
+    public ManageNotes(NoteRepository noteRepository, ManagePlaces managePlaces) {
         this.noteRepository = noteRepository;
+        this.managePlaces = managePlaces;
     }
 
     private void validateTextNote(String text){
@@ -27,15 +30,10 @@ public class ManageNotes {
                     "characters and at most " + TEXT_MAX_LENGTH + " characters");
     }
 
-//    private Note validatePlace(Long placeId){
+    private void validatePlace(Long placeId){
 
-      //  ManagePlaces managePlaces = new ManagePlaces(); check place repository;
-
-     //   if(maybePlace.isEmpty())
-       //     throw new IllegalArgumentException("Place with id '" + placeId + "'does not exist yet!");
-
-     //   return maybePlace.get();
- //   }
+        managePlaces.readPlace(placeId);
+    }
 
     private Note validateNote(Long id){
         Optional<Note> maybeNote =noteRepository.findById(id);
@@ -64,7 +62,7 @@ public class ManageNotes {
     public Note createNote(String text, boolean status, Long placeId,String date){
 
         validateTextNote(text);
-        validateNote(placeId);
+        validatePlace(placeId);
 
         Date date1 = validateDate(date);
 
@@ -77,16 +75,19 @@ public class ManageNotes {
         return note;
     }
 
-    public Note updateNote(Long id,String text, long placeId, boolean status){
+    public Note updateNote(Long id, String text, boolean status, Long placeId, String date){
+
         Note note = validateNote(id);
         validateTextNote(text);
-
-        //validatePlace(placeId);
+        validatePlace(placeId);
+        Date date1 = validateDate(date);
 
         note.setStatusAdded(status);
 
         note.setText(text);
         note.setPlaceId(placeId);
+
+        note.setDate(date1);
 
         return noteRepository.save(note);
     }

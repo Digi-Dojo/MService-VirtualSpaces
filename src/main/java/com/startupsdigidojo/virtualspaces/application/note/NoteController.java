@@ -24,7 +24,7 @@ public class NoteController {
     }
     @PostMapping
     public Note updateNote(@RequestBody UpdateNoteDTO dto){
-        return manageNotes.updateNote(dto.getId(),dto.getText(),dto.getPlaceId(),dto.getStatusAdded());
+        return manageNotes.updateNote(dto.getId(),dto.getText(),dto.getStatusAdded(),dto.getPlaceId(), dto.getDate());
     }
 
     @DeleteMapping("{id}")

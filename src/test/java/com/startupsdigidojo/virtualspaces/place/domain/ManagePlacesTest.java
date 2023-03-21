@@ -1,5 +1,9 @@
 package com.startupsdigidojo.virtualspaces.place.domain;
 
+import com.startupsdigidojo.virtualspaces.domain.place.ManagePlaces;
+import com.startupsdigidojo.virtualspaces.domain.place.Place;
+import com.startupsdigidojo.virtualspaces.domain.place.PlaceRepository;
+import com.startupsdigidojo.virtualspaces.domain.place.PlaceTypes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,7 +15,6 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)

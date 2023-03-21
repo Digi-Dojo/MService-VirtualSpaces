@@ -1,7 +1,7 @@
-package com.startupsdigidojo.virtualspaces.place.application;
+package com.startupsdigidojo.virtualspaces.application.place;
 
-import com.startupsdigidojo.virtualspaces.place.domain.ManagePlaces;
-import com.startupsdigidojo.virtualspaces.place.domain.Place;
+import com.startupsdigidojo.virtualspaces.domain.place.ManagePlaces;
+import com.startupsdigidojo.virtualspaces.domain.place.Place;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

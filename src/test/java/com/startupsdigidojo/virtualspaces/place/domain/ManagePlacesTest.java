@@ -1,9 +1,5 @@
 package com.startupsdigidojo.virtualspaces.place.domain;
 
-import com.startupsdigidojo.virtualspaces.domain.place.ManagePlaces;
-import com.startupsdigidojo.virtualspaces.domain.place.Place;
-import com.startupsdigidojo.virtualspaces.domain.place.PlaceRepository;
-import com.startupsdigidojo.virtualspaces.domain.place.PlaceTypes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

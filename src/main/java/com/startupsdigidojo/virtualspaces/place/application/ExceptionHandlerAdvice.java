@@ -1,4 +1,4 @@
-package com.startupsdigidojo.virtualspaces.application;
+package com.startupsdigidojo.virtualspaces.place.application;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

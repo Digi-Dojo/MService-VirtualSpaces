@@ -1,4 +1,4 @@
-package com.startupsdigidojo.virtualspaces.domain.place;
+package com.startupsdigidojo.virtualspaces.place.domain;
 
 import java.util.Arrays;
 import java.util.Optional;

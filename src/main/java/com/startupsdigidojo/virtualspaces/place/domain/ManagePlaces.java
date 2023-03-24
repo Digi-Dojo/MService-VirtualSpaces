@@ -1,4 +1,4 @@
-package com.startupsdigidojo.virtualspaces.domain.place;
+package com.startupsdigidojo.virtualspaces.place.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

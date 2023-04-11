@@ -59,7 +59,7 @@ public class ManageNotes {
     }
 
 
-    public Note createNote(String text, boolean status, Long placeId,String date){
+    public Note createNote(String text, Long placeId, String date, boolean status){
 
         validateTextNote(text);
         validatePlace(placeId);
@@ -75,7 +75,7 @@ public class ManageNotes {
         return note;
     }
 
-    public Note updateNote(Long id, String text, boolean status, Long placeId, String date){
+    public Note updateNote(Long id, String text, Long placeId, String date, boolean status){
 
         Note note = validateNote(id);
         validateTextNote(text);

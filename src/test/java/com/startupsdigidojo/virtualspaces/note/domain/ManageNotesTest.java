@@ -64,16 +64,16 @@ public class ManageNotesTest {
     @Test
     public void itUpdatesANote() {
 
-        Note note = underTest.createNote("1", true, 125L, currentDate());
+        Note note = underTest.createNote("1", 125L, currentDate(), true);
         when(noteRepository.findById(1L))
                 .thenReturn(Optional.of(new Note(1L, note.getText(), note.getPlaceId(), note.getDate(), note.getStatusAdded())));
 
-        Note noteChange = underTest.createNote("update", true, 100L, currentDate());
+        Note noteChange = underTest.createNote("update", 100L, currentDate(), true);
         when(noteRepository.save(any()))
                 .thenReturn(Optional.of(new Note(1L, noteChange.getText(), noteChange.getPlaceId(), noteChange.getDate(), noteChange.getStatusAdded())));
 
-        Note result = underTest.createNote("1", true, 125L, currentDate());
-        Note resultModified = underTest.updateNote(1L,"1", false, 100L, currentDate());
+        Note result = underTest.createNote("1",125L, currentDate(), true);
+        Note resultModified = underTest.updateNote(1L,"1", 100L, currentDate(), false);
 
         // then
         assertThat(resultModified.getId()).isEqualTo(1L);
@@ -84,14 +84,14 @@ public class ManageNotesTest {
     @Test
     public void itThrowsExceptionIfDescriptionIsInvalid() {
         // must be long at least 1characters and at most 100 characters
-        assertThatThrownBy(() -> underTest.createNote("", true, 125L, currentDate()))
+        assertThatThrownBy(() -> underTest.createNote("", 125L, currentDate(), true))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     public void itThrowsExceptionIfDateHasBadFormat() {
         String badFormatDate = Calendar.getInstance().getTime().toString();
-        assertThatThrownBy(() -> underTest.createNote("", true, 125L, badFormatDate))
+        assertThatThrownBy(() -> underTest.createNote("", 125L, badFormatDate, true))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -99,19 +99,19 @@ public class ManageNotesTest {
     @Test
     public void itThrowsErrorUpdatingNonExistingNote() {
         // given
-        Note note = underTest.createNote("1", true, 125L, currentDate());
+        Note note = underTest.createNote("1", 125L, currentDate(), true);
         when(noteRepository.findById(1L))
                 .thenReturn(Optional.of(new Note(1L, note.getText(), note.getPlaceId(), note.getDate(), note.getStatusAdded())));
 
-        Note noteChange = underTest.createNote("update", true, 100L, currentDate());
+        Note noteChange = underTest.createNote("update", 100L, currentDate(), true);
         when(noteRepository.save(any()))
                 .thenReturn(Optional.of(new Note(1L, noteChange.getText(), noteChange.getPlaceId(), noteChange.getDate(), noteChange.getStatusAdded())));
 
         // when
-        Note result = underTest.createNote("1", true, 125L, currentDate());
+        Note result = underTest.createNote("1", 125L, currentDate(), true);
 
         // then
-        assertThatThrownBy(() -> underTest.updateNote(300L, "Closing status", false, 125L, currentDate()));
+        assertThatThrownBy(() -> underTest.updateNote(300L, "Closing status", 125L, currentDate(), false));
     }
 
     private String currentDate() {

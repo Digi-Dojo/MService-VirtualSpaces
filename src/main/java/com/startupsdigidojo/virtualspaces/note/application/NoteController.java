@@ -20,11 +20,11 @@ public class NoteController {
 
     @PostMapping
     public Note createNewNote(@RequestBody CreateNoteDTO dto){
-        return manageNotes.createNote(dto.getText(),dto.getStatusAdded(),dto.getPlaceId(),dto.getDate());
+        return manageNotes.createNote(dto.getText(), dto.getPlaceId(), dto.getDate(), dto.getStatusAdded());
     }
     @PostMapping
     public Note updateNote(@RequestBody UpdateNoteDTO dto){
-        return manageNotes.updateNote(dto.getId(),dto.getText(),dto.getStatusAdded(),dto.getPlaceId(), dto.getDate());
+        return manageNotes.updateNote(dto.getId(),dto.getText(),dto.getPlaceId(), dto.getDate(), dto.getStatusAdded());
     }
 
     @DeleteMapping("{id}")

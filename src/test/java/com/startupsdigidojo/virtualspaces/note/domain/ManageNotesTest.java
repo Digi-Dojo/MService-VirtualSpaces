@@ -36,27 +36,6 @@ public class ManageNotesTest {
     }
 
     @Test
-    public void itCreatesANote() {
-
-    }
-
-    @Test
-    public void itSticksTheNote() {
-
-    }
-/*
-    // sbagliato
-    @Test
-    public void itThrowsExceptionForNonValidNoteType() {
-        // when
-        long wrongPlaceId = 00L;
-
-        // then
-        assertThatThrownBy(() -> underTest.createNote("", true, wrongPlaceId, "20042023s"))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-*/
-    @Test
     public void itFindsNoteById() {
         // given
         Date date = Calendar.getInstance().getTime();

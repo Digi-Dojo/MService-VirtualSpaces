@@ -16,22 +16,22 @@ public class PlaceController {
         this.managePlaces = managePlaces;
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Place findById(@PathVariable("id") Long id) {
         return managePlaces.readPlace(id);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public Place createNewPlace(@RequestBody CreatePlaceDTO dto) {
         return managePlaces.createPlace(dto.getType(), dto.getStartupId());
     }
 
-    @PostMapping
+    @PostMapping("/update")
     public Place updatePlace(@RequestBody UpdatePlaceDTO dto) {
         return managePlaces.updatePlace(dto.getId(), dto.getType(), dto.getStartupId());
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public Place deletePlace(@PathVariable("id") Long id)  {
         return managePlaces.deletePlace(id);
     }

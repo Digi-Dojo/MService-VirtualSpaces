@@ -15,19 +15,19 @@ public class NoteController {
     @Autowired
     public NoteController (ManageNotes manageNotes){ this.manageNotes=manageNotes;}
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Note findById(@PathVariable("id")Long id){return manageNotes.readNote(id);}
 
-    @PostMapping
+    @PostMapping("/create")
     public Note createNewNote(@RequestBody CreateNoteDTO dto){
         return manageNotes.createNote(dto.getText(), dto.getPlaceId(), dto.getDate(), dto.getStatusAdded());
     }
-    @PostMapping
+    @PostMapping("/update")
     public Note updateNote(@RequestBody UpdateNoteDTO dto){
         return manageNotes.updateNote(dto.getId(),dto.getText(),dto.getPlaceId(), dto.getDate(), dto.getStatusAdded());
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public Note deleteNote(@PathVariable("id")Long id) {
         return manageNotes.deleteNote(id);
     };

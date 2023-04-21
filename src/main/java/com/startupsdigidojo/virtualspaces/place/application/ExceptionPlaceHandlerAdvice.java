@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class ExceptionHandlerAdvice {
+public class ExceptionPlaceHandlerAdvice {
 
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseBody

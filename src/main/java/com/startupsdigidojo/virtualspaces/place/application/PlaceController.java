@@ -1,19 +1,25 @@
 package com.startupsdigidojo.virtualspaces.place.application;
 
+import com.startupsdigidojo.virtualspaces.note.domain.Note;
 import com.startupsdigidojo.virtualspaces.place.domain.ManagePlaces;
 import com.startupsdigidojo.virtualspaces.place.domain.Place;
+import com.startupsdigidojo.virtualspaces.place.domain.SearchPlaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/v1/places")
 public class PlaceController {
 
     private ManagePlaces managePlaces;
+    private SearchPlaces searchPlaces;
 
     @Autowired
-    public PlaceController (ManagePlaces managePlaces) {
+    public PlaceController (ManagePlaces managePlaces, SearchPlaces searchPlaces) {
         this.managePlaces = managePlaces;
+        this.searchPlaces = searchPlaces;
     }
 
     @GetMapping("/{id}")
@@ -36,4 +42,8 @@ public class PlaceController {
         return managePlaces.deletePlace(id);
     }
 
+    @GetMapping("/getAll")
+    public List<Place> findAll(){
+        return searchPlaces.findAll();
+    }
 }

@@ -9,10 +9,11 @@ import java.util.Optional;
 public class ManagePlaces {
 
     private PlaceRepository placeRepository;
-
+    private SearchPlaces searchPlaces;
     @Autowired
     public ManagePlaces(PlaceRepository placeRepository) {
         this.placeRepository = placeRepository;
+        this.searchPlaces = searchPlaces;
     }
 
     //checks that the type is a valid type among those specified by the PlaceTypes class

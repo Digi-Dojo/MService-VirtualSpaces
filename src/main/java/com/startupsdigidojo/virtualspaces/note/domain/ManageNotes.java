@@ -12,8 +12,8 @@ import java.util.Optional;
 @Service
 public class ManageNotes {
 
-    private ManagePlaces managePlaces;
-    private NoteRepository noteRepository;
+    private final ManagePlaces managePlaces;
+    private final NoteRepository noteRepository;
     private final int TEXT_MIN_LENGTH = 1, TEXT_MAX_LENGTH = 100;
 
     @Autowired

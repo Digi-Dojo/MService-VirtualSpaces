@@ -1,39 +1,50 @@
-package com.startupsdigidojo.virtualspaces.application.place;
+package com.startupsdigidojo.virtualspaces.place.application;
 
-import com.startupsdigidojo.virtualspaces.domain.place.ManagePlaces;
-import com.startupsdigidojo.virtualspaces.domain.place.Place;
+import com.startupsdigidojo.virtualspaces.note.domain.Note;
+import com.startupsdigidojo.virtualspaces.place.domain.ManagePlaces;
+import com.startupsdigidojo.virtualspaces.place.domain.Place;
+import com.startupsdigidojo.virtualspaces.place.domain.SearchPlaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @RestController
 @RequestMapping(path = "/v1/places")
 public class PlaceController {
 
     private ManagePlaces managePlaces;
+    private SearchPlaces searchPlaces;
 
     @Autowired
-    public PlaceController (ManagePlaces managePlaces) {
+    public PlaceController (ManagePlaces managePlaces, SearchPlaces searchPlaces) {
         this.managePlaces = managePlaces;
+        this.searchPlaces = searchPlaces;
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Place findById(@PathVariable("id") Long id) {
         return managePlaces.readPlace(id);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public Place createNewPlace(@RequestBody CreatePlaceDTO dto) {
         return managePlaces.createPlace(dto.getType(), dto.getStartupId());
     }
 
-    @PostMapping
+    @PostMapping("/update")
     public Place updatePlace(@RequestBody UpdatePlaceDTO dto) {
         return managePlaces.updatePlace(dto.getId(), dto.getType(), dto.getStartupId());
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public Place deletePlace(@PathVariable("id") Long id)  {
         return managePlaces.deletePlace(id);
     }
 
+    @GetMapping("/getAll")
+    public List<Place> findAll(){
+        return searchPlaces.findAll();
+    }
 }

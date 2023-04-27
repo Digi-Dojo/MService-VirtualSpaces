@@ -1,6 +1,6 @@
-package com.startupsdigidojo.virtualspaces.domain.note;
+package com.startupsdigidojo.virtualspaces.note.domain;
 
-import com.startupsdigidojo.virtualspaces.domain.place.ManagePlaces;
+import com.startupsdigidojo.virtualspaces.place.domain.ManagePlaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +12,8 @@ import java.util.Optional;
 @Service
 public class ManageNotes {
 
-    private ManagePlaces managePlaces;
-    private NoteRepository noteRepository;
+    private final ManagePlaces managePlaces;
+    private final NoteRepository noteRepository;
     private final int TEXT_MIN_LENGTH = 1, TEXT_MAX_LENGTH = 100;
 
     @Autowired
@@ -59,7 +59,7 @@ public class ManageNotes {
     }
 
 
-    public Note createNote(String text, boolean status, Long placeId,String date){
+    public Note createNote(String text, Long placeId, String date, boolean status){
 
         validateTextNote(text);
         validatePlace(placeId);
@@ -75,7 +75,7 @@ public class ManageNotes {
         return note;
     }
 
-    public Note updateNote(Long id, String text, boolean status, Long placeId, String date){
+    public Note updateNote(Long id, String text, Long placeId, String date, boolean status){
 
         Note note = validateNote(id);
         validateTextNote(text);

@@ -119,7 +119,7 @@ public class ManageNotesTest {
         // when
         Note result = underTest.createNote("1", 125L, currentDate(), true);
 
-        // then
+        // then 
         assertThatThrownBy(() -> underTest.updateNote(300L, "Closing status", 125L, currentDate(), false));
     }
 */

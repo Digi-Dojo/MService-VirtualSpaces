@@ -48,9 +48,12 @@ public class ManageNotes {
 
         Date date1;
 
+        System.out.println(date);
+
         try {
              date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
         } catch (ParseException e) {
+//            System.out.println("damn");
             throw new IllegalArgumentException("Date " + date + " is not of the format dd/MM/yyyy");
         }
 
@@ -77,12 +80,16 @@ public class ManageNotes {
 
     public Note updateNote(Long id, String text, Long placeId, String date, boolean status){
 
+
         Note note = validateNote(id);
         validateTextNote(text);
-        validatePlace(placeId);
         Date date1 = validateDate(date);
+        System.out.println("arrivo");
+        validatePlace(placeId);
 
         note.setStatusAdded(status);
+
+        System.out.println(note.getStatusAdded());
 
         note.setText(text);
         note.setPlaceId(placeId);

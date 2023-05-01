@@ -146,7 +146,7 @@ Note resultModified =underTest.updateNote(1L,"2",125L,currentDate(),true);
         when(noteRepository.findById(1L)).thenReturn(Optional.of(new Note(1L,noteChange.getText(),noteChange.getPlaceId(),noteChange.getDate(),noteChange.getStatusAdded())));
 
 
-        // then
+        // then 
         assertThatThrownBy(() -> underTest.updateNote(300L, "Closing status", 125L, currentDate(), false));
     }
 

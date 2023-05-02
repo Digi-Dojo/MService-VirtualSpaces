@@ -30,7 +30,6 @@ public class NoteController {
 
     @GetMapping("/invert/{id}")
     public Note invertStatus(@PathVariable("id")Long id){
-//        System.out.println(id);
         Note note = manageNotes.readNote(id);
         Format f = new SimpleDateFormat("dd/MM/yyyy");
         String strDate = f.format(note.getDate());

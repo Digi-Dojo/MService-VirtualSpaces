@@ -1,8 +1,8 @@
 package com.startupsdigidojo.virtualspaces.note.application;
 
-import com.startupsdigidojo.virtualspaces.note.domain.ManageNotes;
-import com.startupsdigidojo.virtualspaces.note.domain.Note;
-import com.startupsdigidojo.virtualspaces.note.domain.SearchNotes;
+import com.startupsdigidojo.virtualspaces.note.ManageNotes;
+import com.startupsdigidojo.virtualspaces.note.Note;
+import com.startupsdigidojo.virtualspaces.note.SearchNotes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

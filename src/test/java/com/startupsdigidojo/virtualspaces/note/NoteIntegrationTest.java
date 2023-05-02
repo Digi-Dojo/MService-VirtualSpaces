@@ -10,12 +10,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -196,6 +202,46 @@ public class NoteIntegrationTest {
         assertThat(changed.getPlaceId()).isEqualTo(placeId);
         assertThat(changed.getText()).isEqualTo(text);
         assertThat(changed.getStatusAdded()).isEqualTo(inputNote.getStatusAdded());
+    }
+
+    @Test
+    public void itCreatesSeveralNotesAndGetThemAll() {
+        PlaceTypes typePlace = PlaceTypes.MEETING_ROOM;
+        Long startupId = 110L;
+        Place inputPlace = new Place(typePlace, startupId);
+
+        // when
+        Place place = restTemplate.postForObject(placesUrl + "/create", inputPlace, Place.class);
+
+        Note inputNote1 = new Note("1", place.getId(), Calendar.getInstance().getTime(), true);
+        Note inputNote2 = new Note("2", place.getId(), Calendar.getInstance().getTime(), true);
+        Note inputNote3 = new Note("3", place.getId(), Calendar.getInstance().getTime(), true);
+
+        Note created1 = restTemplate.postForObject(baseUrl + "/create", inputNote1, Note.class);
+        Note created2 = restTemplate.postForObject(baseUrl + "/create", inputNote2, Note.class);
+        Note created3 = restTemplate.postForObject(baseUrl + "/create", inputNote3, Note.class);
+
+
+        ParameterizedTypeReference<List<Note>> typeRef = new ParameterizedTypeReference<List<Note>>() {
+        };
+
+        ResponseEntity<List<Note>> responseEntity = restTemplate.exchange(baseUrl + "/getAll", HttpMethod.GET, new HttpEntity<>(new HttpHeaders()), typeRef);
+        List<Note> myModelClasses = responseEntity.getBody();
+
+        assertThat(myModelClasses).isNotNull();
+
+        Note note1 = (Note) myModelClasses.get(0);
+        Note note2 = (Note) myModelClasses.get(1);
+        Note note3 = (Note) myModelClasses.get(2);
+
+        assertThat(note1.getId()).isNotNull();
+        assertThat(note2.getId()).isNotNull();
+        assertThat(note3.getId()).isNotNull();
+        assertThat(note1.getText()).isEqualTo("1");
+        assertThat(note2.getText()).isEqualTo("2");
+        assertThat(note3.getText()).isEqualTo("3");
+
+
     }
 
 

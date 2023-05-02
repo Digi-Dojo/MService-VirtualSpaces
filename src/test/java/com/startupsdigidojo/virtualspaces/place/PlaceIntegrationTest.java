@@ -146,7 +146,6 @@ public class PlaceIntegrationTest {
         // then
         assertThat(myModelClasses).isNotNull();
 
-        System.out.println(myModelClasses.get(0));
 
         Place place1 = (Place) myModelClasses.get(0);
         Place place2 = (Place) myModelClasses.get(1);

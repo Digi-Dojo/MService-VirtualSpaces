@@ -40,9 +40,9 @@ public class NoteController {
     public Note createNewNote(@RequestBody CreateNoteDTO dto){
         return manageNotes.createNote(dto.getText(), dto.getPlaceId(), dto.getDate(), dto.getStatusAdded());
     }
-    @PostMapping("/update")
-    public Note updateNote(@RequestBody UpdateNoteDTO dto){
-        return manageNotes.updateNote(dto.getId(),dto.getText(),dto.getPlaceId(), dto.getDate(), dto.getStatusAdded());
+    @PostMapping("/update/{id}")
+    public Note updateNote(@PathVariable("id") Long id,@RequestBody UpdateNoteDTO dto){
+        return manageNotes.updateNote(id,dto.getText(),dto.getPlaceId(), dto.getDate(), dto.getStatusAdded());
     }
 
     @DeleteMapping("/delete/{id}")

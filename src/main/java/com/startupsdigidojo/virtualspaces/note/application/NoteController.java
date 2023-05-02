@@ -1,8 +1,8 @@
 package com.startupsdigidojo.virtualspaces.note.application;
 
-import com.startupsdigidojo.virtualspaces.note.domain.ManageNotes;
-import com.startupsdigidojo.virtualspaces.note.domain.Note;
-import com.startupsdigidojo.virtualspaces.note.domain.SearchNotes;
+import com.startupsdigidojo.virtualspaces.note.ManageNotes;
+import com.startupsdigidojo.virtualspaces.note.Note;
+import com.startupsdigidojo.virtualspaces.note.SearchNotes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,9 +40,9 @@ public class NoteController {
     public Note createNewNote(@RequestBody CreateNoteDTO dto){
         return manageNotes.createNote(dto.getText(), dto.getPlaceId(), dto.getDate(), dto.getStatusAdded());
     }
-    @PostMapping("/update")
-    public Note updateNote(@RequestBody UpdateNoteDTO dto){
-        return manageNotes.updateNote(dto.getId(),dto.getText(),dto.getPlaceId(), dto.getDate(), dto.getStatusAdded());
+    @PostMapping("/update/{id}")
+    public Note updateNote(@PathVariable("id") Long id,@RequestBody UpdateNoteDTO dto){
+        return manageNotes.updateNote(id,dto.getText(),dto.getPlaceId(), dto.getDate(), dto.getStatusAdded());
     }
 
     @DeleteMapping("/delete/{id}")

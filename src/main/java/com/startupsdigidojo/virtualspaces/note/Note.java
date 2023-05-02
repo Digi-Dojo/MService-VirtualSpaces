@@ -1,7 +1,10 @@
-package com.startupsdigidojo.virtualspaces.note.domain;
+package com.startupsdigidojo.virtualspaces.note;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 // NOTE: Has a small text added by a user in a place. Should have a date and a status (ADDED, REMOVED).
@@ -17,6 +20,7 @@ public class Note {
 
     private Long placeId;
 
+@JsonFormat(pattern = "dd/MM/yyyy")
     private Date date;
 
     private boolean statusAdded;
@@ -65,7 +69,8 @@ public class Note {
     }
 
     public Date getDate() {
-        return date;
+
+     return date;
     }
 
     public void setDate(Date date) {

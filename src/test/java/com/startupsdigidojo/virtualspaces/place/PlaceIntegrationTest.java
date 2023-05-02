@@ -38,11 +38,13 @@ public class PlaceIntegrationTest {
     @BeforeAll
     public static void init() {
         restTemplate = new RestTemplate();
+
     }
 
     @BeforeEach
     public void setup() {
         baseUrl = baseUrl + ":" + port + "/v1/places";
+
 
         ensureEmptyDatabase();
     }

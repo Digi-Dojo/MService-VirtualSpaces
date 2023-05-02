@@ -97,7 +97,7 @@ public class ManagePlacesTest {
         // then
         assertThat(resultModified.getId()).isEqualTo(1L);
         assertThat(resultModified.getType()).isEqualTo(PlaceTypes.MEETING_ROOM);
-        assertThat(result.getStartupId()).isEqualTo(100L);
+        assertThat(resultModified.getStartupId()).isEqualTo(100L);
     }
 
     @Test

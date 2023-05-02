@@ -6,6 +6,8 @@ import com.startupsdigidojo.virtualspaces.note.domain.SearchNotes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
@@ -25,6 +27,14 @@ public class NoteController {
 
     @GetMapping("/{id}")
     public Note findById(@PathVariable("id")Long id){return manageNotes.readNote(id);}
+
+    @GetMapping("/invert/{id}")
+    public Note invertStatus(@PathVariable("id")Long id){
+        Note note = manageNotes.readNote(id);
+        Format f = new SimpleDateFormat("dd/MM/yyyy");
+        String strDate = f.format(note.getDate());
+        System.out.println(strDate);
+        return manageNotes.updateNote(id, note.getText(), note.getPlaceId(), strDate, !note.getStatusAdded());}
 
     @PostMapping("/create")
     public Note createNewNote(@RequestBody CreateNoteDTO dto){

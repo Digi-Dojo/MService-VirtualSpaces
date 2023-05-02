@@ -33,9 +33,9 @@ public class PlaceController {
         return managePlaces.createPlace(dto.getType(), dto.getStartupId());
     }
 
-    @PostMapping("/update")
-    public Place updatePlace(@RequestBody UpdatePlaceDTO dto) {
-        return managePlaces.updatePlace(dto.getId(), dto.getType(), dto.getStartupId());
+    @PostMapping("/update/{id}")
+    public Place updatePlace(@PathVariable("id") Long id, @RequestBody UpdatePlaceDTO dto) {
+        return managePlaces.updatePlace(id, dto.getType(), dto.getStartupId());
     }
 
     @DeleteMapping("/delete/{id}")

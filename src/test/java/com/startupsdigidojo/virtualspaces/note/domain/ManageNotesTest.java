@@ -123,8 +123,8 @@ Note resultModified =underTest.updateNote(1L,"2",125L,currentDate(),true);
     @Test
     public void itThrowsErrorExceptionCreatingNoteToNonExistingPlace() {
 
-
-
+        assertThatThrownBy(() -> underTest.createNote("1", 129L, currentDate(), true)).hasMessage("Place with id '" + 129 + "' does not exist yet!")
+                .isInstanceOf(IllegalArgumentException.class);
 
     }
 

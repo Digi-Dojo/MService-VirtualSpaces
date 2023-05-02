@@ -11,12 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -122,6 +121,50 @@ public class PlaceIntegrationTest {
 
         //place no longer existing
         assertThatThrownBy(() -> restTemplate.getForObject(baseUrl + "/" + inputPlace.getId(), Place.class));
+    }
+
+    @Test
+    public void itCreatesSeveralPlacesAndGetThemAll() {
+        // given
+        Place inputPlace1 = new Place(PlaceTypes.PERSONAL_DESK, 100L);
+        Place inputPlace2 = new Place(PlaceTypes.MEETING_ROOM, 100L);
+        Place inputPlace3 = new Place(PlaceTypes.BOARD, 200L);
+
+        // when
+        restTemplate.postForObject(baseUrl + "/create", inputPlace1, Place.class);
+        restTemplate.postForObject(baseUrl + "/create", inputPlace2, Place.class);
+        restTemplate.postForObject(baseUrl + "/create", inputPlace3, Place.class);
+
+        ParameterizedTypeReference<List<Place>> typeRef = new ParameterizedTypeReference<List<Place>>() {
+        };
+
+        ResponseEntity<List<Place>> responseEntity = restTemplate.exchange(baseUrl + "/getAll", HttpMethod.GET, new HttpEntity<>(new HttpHeaders()), typeRef);
+        List<Place> myModelClasses = responseEntity.getBody();
+
+        // then
+        assertThat(myModelClasses).isNotNull();
+
+        System.out.println(myModelClasses.get(0));
+
+        Place place1 = (Place) myModelClasses.get(0);
+        Place place2 = (Place) myModelClasses.get(1);
+        Place place3 = (Place) myModelClasses.get(2);
+
+        assertThat(place1.getId()).isNotNull();
+        assertThat(place1.getType()).isEqualTo(PlaceTypes.PERSONAL_DESK);
+        assertThat(place1.getStartupId()).isEqualTo(100L);
+        assertThat(place2.getId()).isNotNull();
+        assertThat(place2.getType()).isEqualTo(PlaceTypes.MEETING_ROOM);
+        assertThat(place2.getStartupId()).isEqualTo(100L);
+        assertThat(place3.getId()).isNotNull();
+        assertThat(place3.getType()).isEqualTo(PlaceTypes.BOARD);
+        assertThat(place3.getStartupId()).isEqualTo(200L);
+    }
+
+    @Test
+    public void itThrowsErrorSearchingNonExistingPlaces() {
+        //db is empty
+        assertThatThrownBy(() -> restTemplate.getForObject(baseUrl + "/50", Place.class));
     }
 
 

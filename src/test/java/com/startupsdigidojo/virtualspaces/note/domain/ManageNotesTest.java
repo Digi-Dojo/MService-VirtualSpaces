@@ -1,5 +1,8 @@
 package com.startupsdigidojo.virtualspaces.note.domain;
 
+import com.startupsdigidojo.virtualspaces.note.ManageNotes;
+import com.startupsdigidojo.virtualspaces.note.Note;
+import com.startupsdigidojo.virtualspaces.note.NoteRepository;
 import com.startupsdigidojo.virtualspaces.place.domain.ManagePlaces;
 import com.startupsdigidojo.virtualspaces.place.domain.Place;
 import com.startupsdigidojo.virtualspaces.place.domain.PlaceRepository;
@@ -9,9 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import com.startupsdigidojo.virtualspaces.note.domain.ManageNotes;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -123,8 +124,8 @@ Note resultModified =underTest.updateNote(1L,"2",125L,currentDate(),true);
     @Test
     public void itThrowsErrorExceptionCreatingNoteToNonExistingPlace() {
 
-
-
+        assertThatThrownBy(() -> underTest.createNote("1", 129L, currentDate(), true)).hasMessage("Place with id '" + 129 + "' does not exist yet!")
+                .isInstanceOf(IllegalArgumentException.class);
 
     }
 

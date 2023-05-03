@@ -1,6 +1,5 @@
 package com.startupsdigidojo.virtualspaces.place.application;
 
-import com.startupsdigidojo.virtualspaces.note.domain.Note;
 import com.startupsdigidojo.virtualspaces.place.domain.ManagePlaces;
 import com.startupsdigidojo.virtualspaces.place.domain.Place;
 import com.startupsdigidojo.virtualspaces.place.domain.SearchPlaces;

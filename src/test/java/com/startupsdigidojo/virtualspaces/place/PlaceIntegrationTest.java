@@ -38,11 +38,13 @@ public class PlaceIntegrationTest {
     @BeforeAll
     public static void init() {
         restTemplate = new RestTemplate();
+
     }
 
     @BeforeEach
     public void setup() {
         baseUrl = baseUrl + ":" + port + "/v1/places";
+
 
         ensureEmptyDatabase();
     }
@@ -144,7 +146,6 @@ public class PlaceIntegrationTest {
         // then
         assertThat(myModelClasses).isNotNull();
 
-        System.out.println(myModelClasses.get(0));
 
         Place place1 = (Place) myModelClasses.get(0);
         Place place2 = (Place) myModelClasses.get(1);

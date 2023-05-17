@@ -1,9 +1,9 @@
 package com.startupsdigidojo.virtualspaces.note;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.startupsdigidojo.virtualspaces.note.domain.Note;
+import com.startupsdigidojo.virtualspaces.note.domain.NoteRepository;
 import com.startupsdigidojo.virtualspaces.place.domain.Place;
 import com.startupsdigidojo.virtualspaces.place.domain.PlaceTypes;
-import jakarta.persistence.Column;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,14 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;

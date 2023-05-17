@@ -1,7 +1,10 @@
-package com.startupsdigidojo.virtualspaces.note.application;
+package com.startupsdigidojo.virtualspaces.note.application.dto;
+
+import lombok.Getter;
+import lombok.Setter;
 
 public class UpdateNoteDTO extends CreateNoteDTO {
-
+    @Setter @Getter
     private Long id;
     public UpdateNoteDTO() {super();}
 
@@ -11,7 +14,4 @@ public class UpdateNoteDTO extends CreateNoteDTO {
         this.id=id;
     }
 
-    public Long getId(){return id;}
-
-    public void setId(Long id){this.id=id;}
 }

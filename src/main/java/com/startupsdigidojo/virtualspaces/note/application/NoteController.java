@@ -1,4 +1,4 @@
-package com.startupsdigidojo.virtualspaces.note;
+package com.startupsdigidojo.virtualspaces.note.application;
 
 import com.startupsdigidojo.virtualspaces.note.domain.ManageNotes;
 import com.startupsdigidojo.virtualspaces.note.domain.Note;

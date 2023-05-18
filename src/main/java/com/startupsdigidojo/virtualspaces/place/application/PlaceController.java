@@ -1,4 +1,4 @@
-package com.startupsdigidojo.virtualspaces.place;
+package com.startupsdigidojo.virtualspaces.place.application;
 
 import com.startupsdigidojo.virtualspaces.place.application.dto.CreatePlaceDTO;
 import com.startupsdigidojo.virtualspaces.place.application.dto.UpdatePlaceDTO;

@@ -1,11 +1,9 @@
 package com.startupsdigidojo.virtualspaces.place.application.dto;
 
 import com.startupsdigidojo.virtualspaces.place.application.dto.CreatePlaceDTO;
-import lombok.Getter;
-import lombok.Setter;
 
 public class UpdatePlaceDTO extends CreatePlaceDTO {
-    @Getter @Setter
+
     private Long id;
 
     public UpdatePlaceDTO () {super(); }

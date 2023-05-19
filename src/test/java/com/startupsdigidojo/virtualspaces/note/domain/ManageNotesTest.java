@@ -33,6 +33,7 @@ public class ManageNotesTest {
     @Mock
     private PlaceRepository placeRepository;
 
+
     @BeforeEach
     void setup() {
         managePlaces = new ManagePlaces(placeRepository);

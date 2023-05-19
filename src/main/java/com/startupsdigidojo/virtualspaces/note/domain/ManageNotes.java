@@ -17,6 +17,9 @@ public class ManageNotes {
     private final int TEXT_MIN_LENGTH = 1, TEXT_MAX_LENGTH = 100;
 
     @Autowired
+    private Broadcaster broadcaster;
+
+    @Autowired
     public ManageNotes(NoteRepository noteRepository, ManagePlaces managePlaces) {
         this.noteRepository = noteRepository;
         this.managePlaces = managePlaces;
@@ -68,8 +71,9 @@ public class ManageNotes {
         validatePlace(placeId);
 
         Date date1 = validateDate(date);
-
-        return noteRepository.save(new Note(text,placeId,date1,status));
+        Note note = new Note(text,placeId,date1,status);
+        broadcaster.emitNoteAdded(note);
+        return noteRepository.save(note);
     }
 
     public Note readNote(Long id){

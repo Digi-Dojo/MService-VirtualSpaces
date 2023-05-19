@@ -13,8 +13,8 @@ public class NoteAdded extends Event {
     @Getter
     private Note payload;
 
-    public NoteAdded(Note place) {
-        payload = place;
+    public NoteAdded(Note note) {
+        payload = note;
     }
 
     public String toJson() {

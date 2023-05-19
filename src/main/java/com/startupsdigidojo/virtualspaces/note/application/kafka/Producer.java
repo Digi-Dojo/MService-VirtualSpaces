@@ -14,7 +14,7 @@ public class Producer {
 
     public void generate(String message) {
         String jsonMessage = messageToJson(message);
-        kafkaTemplate.send("messages", jsonMessage);
+        kafkaTemplate.send("topic_0", jsonMessage);
     }
 
     private String messageToJson(String message) {

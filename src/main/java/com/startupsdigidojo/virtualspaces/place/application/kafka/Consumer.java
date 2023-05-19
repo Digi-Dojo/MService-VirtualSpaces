@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
-@RequiredArgsConstructor
-@Component
+//@RequiredArgsConstructor
+//@Component
 public class Consumer {
-
+/* tenere
     @Autowired
     private PlaceRepository placeRepository;
 
@@ -24,8 +24,10 @@ public class Consumer {
     public void consume(String jsonMessage) {
         System.out.println("Received:" + jsonMessage);
     }
+*/
 
-    /*
+
+    /* modificare
     @KafkaListener(
             containerFactory = "postWrittenEventKafkaListenerContainerFactory",
             topics = "${it.unibz.archlab.digidojo.engagement.kafka.consumer.topics.posts_written}",

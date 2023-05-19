@@ -1,4 +1,4 @@
-package com.startupsdigidojo.virtualspaces.note.application.kafka;
+package com.startupsdigidojo.virtualspaces.place.application.kafka;
 
 import java.util.Map;
 
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.*;
 
 @Configuration
-public class KafkaConfiguration {
+public class KafkaConfigurationRefactoringNeeded {
     @Value("${spring.kafka.properties.bootstrap.servers}")
     private String bootstrapServers;
 

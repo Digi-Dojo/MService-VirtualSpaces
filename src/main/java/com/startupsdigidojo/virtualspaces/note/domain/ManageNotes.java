@@ -1,5 +1,6 @@
 package com.startupsdigidojo.virtualspaces.note.domain;
 
+import com.startupsdigidojo.virtualspaces.note.application.kafka.Producer;
 import com.startupsdigidojo.virtualspaces.place.domain.ManagePlaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class ManageNotes {
     private final int TEXT_MIN_LENGTH = 1, TEXT_MAX_LENGTH = 100;
 
     @Autowired
-    private Broadcaster broadcaster;
+    private Producer broadcaster;
 
     @Autowired
     public ManageNotes(NoteRepository noteRepository, ManagePlaces managePlaces) {

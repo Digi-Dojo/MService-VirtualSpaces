@@ -1,5 +1,5 @@
 package com.startupsdigidojo.virtualspaces.note.application.kafka;
-
+//import com.fasterxml.jackson.databind.ser.std.StringSerializer;
 import com.startupsdigidojo.virtualspaces.note.application.event.NoteAdded;
 import com.startupsdigidojo.virtualspaces.note.domain.Broadcaster;
 import com.startupsdigidojo.virtualspaces.note.domain.Note;

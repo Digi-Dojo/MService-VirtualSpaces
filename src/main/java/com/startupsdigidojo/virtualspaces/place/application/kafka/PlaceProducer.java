@@ -1,8 +1,6 @@
 package com.startupsdigidojo.virtualspaces.place.application.kafka;
 
-import com.startupsdigidojo.virtualspaces.place.application.event.PlaceCreated;
-import com.startupsdigidojo.virtualspaces.place.application.event.PlaceDeleted;
-import com.startupsdigidojo.virtualspaces.place.application.event.PlaceUpdated;
+import com.startupsdigidojo.virtualspaces.place.application.event.*;
 import com.startupsdigidojo.virtualspaces.place.domain.Place;
 import com.startupsdigidojo.virtualspaces.place.domain.PlaceBroadcaster;
 import lombok.RequiredArgsConstructor;
@@ -36,4 +34,18 @@ public class PlaceProducer implements PlaceBroadcaster {
         kafkaTemplate.send("place.deleted", placeDeleted.toJson());
 
     }
+
+    @Override
+    public void emitUserEnteredPlace(Place place) { //add User
+        UserEnteredPlace userEnteredPlace = new UserEnteredPlace(place);
+        kafkaTemplate.send("place.user_entered", userEnteredPlace.toJson());
+    }
+
+    @Override
+    public void emitUserLeftPlace(Place place) { //add User
+        UserLeftPlace userLeftPlace = new UserLeftPlace(place);
+        kafkaTemplate.send("place.user_left", userLeftPlace.toJson());
+    }
+
+
 }

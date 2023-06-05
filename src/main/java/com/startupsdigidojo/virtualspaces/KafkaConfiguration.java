@@ -1,19 +1,15 @@
-package com.startupsdigidojo.virtualspaces.place.application.kafka;
+package com.startupsdigidojo.virtualspaces;
 
 import java.util.Map;
-
-import com.fasterxml.jackson.databind.ser.std.StringSerializer;
+import org.apache.kafka.common.serialization.StringSerializer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.*;
-class KafkaConfigurationRefactoringNeeded {
 
-}
-/*
 @Configuration
-public class KafkaConfigurationRefactoringNeeded {
+public class KafkaConfiguration {
     @Value("${spring.kafka.properties.bootstrap.servers}")
     private String bootstrapServers;
 
@@ -45,4 +41,3 @@ public class KafkaConfigurationRefactoringNeeded {
         return new KafkaTemplate<>(producerFactory());
     }
 }
-*/

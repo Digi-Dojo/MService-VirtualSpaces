@@ -29,7 +29,9 @@ public class NoteController {
     }
 
     @GetMapping("/{id}")
-    public Note findById(@PathVariable("id")Long id){return manageNotes.readNote(id);}
+    public Note findById(@PathVariable("id")Long id){
+        return manageNotes.readNote(id);
+    }
 
     @GetMapping("/invert/{id}")
     public Note invertStatus(@PathVariable("id")Long id){
@@ -37,12 +39,14 @@ public class NoteController {
         Format f = new SimpleDateFormat("dd/MM/yyyy");
         String strDate = f.format(note.getDate());
         System.out.println(strDate);
-        return manageNotes.updateNote(id, note.getText(), note.getPlaceId(), strDate, !note.getStatusAdded());}
+        return manageNotes.updateNote(id, note.getText(), note.getPlaceId(), strDate, !note.getStatusAdded());
+    }
 
     @PostMapping("/create")
     public Note createNewNote(@RequestBody CreateNoteDTO dto){
         return manageNotes.createNote(dto.getText(), dto.getPlaceId(), dto.getDate(), dto.getStatusAdded());
     }
+
     @PostMapping("/update/{id}")
     public Note updateNote(@PathVariable("id") Long id,@RequestBody UpdateNoteDTO dto){
         return manageNotes.updateNote(id,dto.getText(),dto.getPlaceId(), dto.getDate(), dto.getStatusAdded());

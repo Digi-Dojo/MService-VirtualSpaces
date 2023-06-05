@@ -3,7 +3,7 @@ package com.startupsdigidojo.virtualspaces.place.application.event;
 import lombok.Getter;
 import lombok.Setter;
 
-public abstract class Event {
+public abstract class PlaceEvent {
     @Setter
     @Getter
     protected String type;

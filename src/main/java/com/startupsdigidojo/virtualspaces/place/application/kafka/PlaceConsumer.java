@@ -1,15 +1,9 @@
 package com.startupsdigidojo.virtualspaces.place.application.kafka;
 
 
-import com.startupsdigidojo.virtualspaces.place.domain.PlaceRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Component;
-
 //@RequiredArgsConstructor
 //@Component
-public class Consumer {
+public class PlaceConsumer {
 /* tenere
     @Autowired
     private PlaceRepository placeRepository;

@@ -3,16 +3,16 @@ package com.startupsdigidojo.virtualspaces.place.application.event;
 import com.startupsdigidojo.virtualspaces.place.domain.Place;
 import lombok.Getter;
 
-public class PlaceCreated extends PlaceEvent {
-    public static final String PLACE_CREATED = "Place created";
+public class PlaceUpdated {
+    public static final String PLACE_UPDATED = "Place deleted";
 
     @Getter
-    private String type = PLACE_CREATED;
+    private String type = PLACE_UPDATED;
 
     @Getter
     private Place payload;
 
-    public PlaceCreated(Place place) {
+    public PlaceUpdated(Place place) {
         payload = place;
     }
 

@@ -1,6 +1,6 @@
 package com.startupsdigidojo.virtualspaces.note.domain;
 
-import com.startupsdigidojo.virtualspaces.note.application.kafka.Producer;
+import com.startupsdigidojo.virtualspaces.note.application.kafka.NoteProducer;
 import com.startupsdigidojo.virtualspaces.place.domain.ManagePlaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class ManageNotes {
     private final int TEXT_MIN_LENGTH = 1, TEXT_MAX_LENGTH = 100;
 
     @Autowired
-    private Producer broadcaster;
+    private NoteProducer broadcaster;
 
     @Autowired
     public ManageNotes(NoteRepository noteRepository, ManagePlaces managePlaces) {
@@ -85,7 +85,6 @@ public class ManageNotes {
 
     public Note updateNote(Long id, String text, Long placeId, String date, boolean status){
 
-
         Note note = validateNote(id);
         validateTextNote(text);
         Date date1 = validateDate(date);
@@ -100,7 +99,7 @@ public class ManageNotes {
         note.setPlaceId(placeId);
 
         note.setDate(date1);
-
+        broadcaster.emitNoteUpdated(note);
         return noteRepository.save(note);
     }
 
@@ -112,5 +111,4 @@ public class ManageNotes {
 
         return note;
     }
-
 }

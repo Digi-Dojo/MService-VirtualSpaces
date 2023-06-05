@@ -23,6 +23,7 @@ public class PlaceUpdated {
                 "\"uuid\": \"" + payload.getId() + "\"," +
                 "\"type\": \"" + payload.getType() + "\"," +
                 "\"startup\": \"" + payload.getStartupId() + "\"" +
+                "\"time\": \"" + System.currentTimeMillis() + "\"" +
                 "}" +
                 "}";
 

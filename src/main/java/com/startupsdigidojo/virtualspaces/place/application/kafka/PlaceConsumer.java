@@ -1,15 +1,22 @@
 package com.startupsdigidojo.virtualspaces.place.application.kafka;
 
 
+import com.startupsdigidojo.virtualspaces.place.domain.Place;
+import com.startupsdigidojo.virtualspaces.place.domain.PlaceBroadcaster;
+import com.startupsdigidojo.virtualspaces.place.domain.PlaceRepository;
+import com.startupsdigidojo.virtualspaces.place.domain.PlaceSyncService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
+
 //@RequiredArgsConstructor
 //@Component
 public class PlaceConsumer {
-/* tenere
+
     @Autowired
     private PlaceRepository placeRepository;
 
-    //@Autowired
-    //private PostSyncService postSyncService;
+    @Autowired
+    private PlaceSyncService placeSyncService;
 
     @KafkaListener(
             topics = "${it.unibz.archlab.digidojo.engagement.kafka.consumer.topics.messages}",
@@ -18,7 +25,7 @@ public class PlaceConsumer {
     public void consume(String jsonMessage) {
         System.out.println("Received:" + jsonMessage);
     }
-*/
+
 
 
     /* modificare

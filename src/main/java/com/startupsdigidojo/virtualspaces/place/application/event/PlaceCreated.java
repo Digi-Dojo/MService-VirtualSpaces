@@ -23,6 +23,7 @@ public class PlaceCreated extends PlaceEvent {
                 "\"uuid\": \"" + payload.getId() + "\"," +
                 "\"type\": \"" + payload.getType() + "\"," +
                 "\"startup\": \"" + payload.getStartupId() + "\"" +
+                "\"time\": \"" + System.currentTimeMillis() + "\"" +
                 "}" +
                 "}";
 

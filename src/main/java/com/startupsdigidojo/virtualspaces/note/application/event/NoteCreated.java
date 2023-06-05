@@ -26,6 +26,7 @@ public class NoteCreated extends NoteEvent {
                 "\"place\": \"" + payload.getPlaceId() + "\"," +
                 "\"date\": \"" + payload.getDate() + "\"," +
                 "\"statusAdded\": \"" + payload.getStatusAdded() + "\"" +
+                "\"time\": \"" + System.currentTimeMillis() + "\"" +
                 "}" +
                 "}";
 

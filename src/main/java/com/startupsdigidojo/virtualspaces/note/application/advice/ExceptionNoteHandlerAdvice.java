@@ -1,4 +1,4 @@
-package com.startupsdigidojo.virtualspaces.place.application;
+package com.startupsdigidojo.virtualspaces.note.application.advice;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class ExceptionPlaceHandlerAdvice {
+public class ExceptionNoteHandlerAdvice {
 
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseBody

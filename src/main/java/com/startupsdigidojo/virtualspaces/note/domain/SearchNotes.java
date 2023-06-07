@@ -1,4 +1,4 @@
-package com.startupsdigidojo.virtualspaces.note;
+package com.startupsdigidojo.virtualspaces.note.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

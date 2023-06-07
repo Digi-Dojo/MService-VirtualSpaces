@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@CrossOrigin(origins = "https://mfront-virtualspaces-oxjk.onrender.com", maxAge = 3600)
 @CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
+@CrossOrigin(origins = "https://sddl-note-creator.onrender.com/", maxAge = 3600)
+
 @RestController
 @RequestMapping(path = "/v1/places")
 public class PlaceController {

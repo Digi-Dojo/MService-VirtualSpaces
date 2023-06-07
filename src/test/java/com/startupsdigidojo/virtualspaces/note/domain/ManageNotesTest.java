@@ -1,5 +1,8 @@
 package com.startupsdigidojo.virtualspaces.note.domain;
 
+import com.startupsdigidojo.virtualspaces.note.ManageNotes;
+import com.startupsdigidojo.virtualspaces.note.Note;
+import com.startupsdigidojo.virtualspaces.note.NoteRepository;
 import com.startupsdigidojo.virtualspaces.place.domain.ManagePlaces;
 import com.startupsdigidojo.virtualspaces.place.domain.Place;
 import com.startupsdigidojo.virtualspaces.place.domain.PlaceRepository;
@@ -32,7 +35,6 @@ public class ManageNotesTest {
 
     @Mock
     private PlaceRepository placeRepository;
-
 
     @BeforeEach
     void setup() {

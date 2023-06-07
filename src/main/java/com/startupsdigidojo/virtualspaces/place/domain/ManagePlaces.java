@@ -1,7 +1,5 @@
 package com.startupsdigidojo.virtualspaces.place.domain;
 
-import com.startupsdigidojo.virtualspaces.note.application.kafka.NoteProducer;
-import com.startupsdigidojo.virtualspaces.place.application.kafka.PlaceProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +10,6 @@ public class ManagePlaces {
 
     private PlaceRepository placeRepository;
     private SearchPlaces searchPlaces;
-
-    @Autowired
-    private PlaceProducer broadcaster;
-
     @Autowired
     public ManagePlaces(PlaceRepository placeRepository) {
         this.placeRepository = placeRepository;
@@ -48,9 +42,8 @@ public class ManagePlaces {
     public Place createPlace(String type, Long startupId) {
 
         PlaceTypes typePlace = validatePlaceType(type);
-        Place place = new Place(typePlace, startupId);
-        broadcaster.emitPlaceAdded(place);
-        return placeRepository.save(place);
+
+        return placeRepository.save(new Place(typePlace, startupId));
     }
 
     public Place readPlace(Long id) {
@@ -69,7 +62,6 @@ public class ManagePlaces {
 
         place.setType(typePlace);
         place.setStartupId(startupId);
-        broadcaster.emitPlaceUpdated(place);
 
         return placeRepository.save(place);
     }
@@ -79,8 +71,6 @@ public class ManagePlaces {
         Place place = validatePlace(id);
 
         placeRepository.delete(place);
-
-        broadcaster.emitPlaceDeleted(place);
 
         return place;
     }

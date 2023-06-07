@@ -1,7 +1,5 @@
 package com.startupsdigidojo.virtualspaces.place.application;
 
-import com.startupsdigidojo.virtualspaces.place.application.dto.CreatePlaceDTO;
-import com.startupsdigidojo.virtualspaces.place.application.dto.UpdatePlaceDTO;
 import com.startupsdigidojo.virtualspaces.place.domain.ManagePlaces;
 import com.startupsdigidojo.virtualspaces.place.domain.Place;
 import com.startupsdigidojo.virtualspaces.place.domain.SearchPlaces;
@@ -10,9 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
 @CrossOrigin(origins = "https://sddl-note-creator.onrender.com/", maxAge = 3600)
-
 @RestController
 @RequestMapping(path = "/v1/places")
 public class PlaceController {

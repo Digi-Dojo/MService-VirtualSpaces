@@ -1,4 +1,4 @@
-package com.startupsdigidojo.virtualspaces.place.application.dto;
+package com.startupsdigidojo.virtualspaces.place.application;
 
 public class CreatePlaceDTO {
 

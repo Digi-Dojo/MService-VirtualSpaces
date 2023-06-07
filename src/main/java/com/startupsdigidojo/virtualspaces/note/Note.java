@@ -1,4 +1,4 @@
-package com.startupsdigidojo.virtualspaces.note.domain;
+package com.startupsdigidojo.virtualspaces.note;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;

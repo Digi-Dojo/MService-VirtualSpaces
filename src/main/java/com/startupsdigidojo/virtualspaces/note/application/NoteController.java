@@ -10,7 +10,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-@CrossOrigin(origins = "https://sddl-note-creator.onrender.com/", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping(path="/v1/notes")
 

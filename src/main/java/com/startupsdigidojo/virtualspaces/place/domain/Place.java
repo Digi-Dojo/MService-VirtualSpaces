@@ -59,9 +59,7 @@ public class Place {
     }
 
     public void removeUser(Long userId) {
-        if(this.users.contains(userId)) {
-            users.remove(userId);
-        }
+        users.remove(userId);
     }
 
     public void setStartupId(Long startupId) {

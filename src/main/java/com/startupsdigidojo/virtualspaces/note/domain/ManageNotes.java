@@ -1,4 +1,4 @@
-package com.startupsdigidojo.virtualspaces.note;
+package com.startupsdigidojo.virtualspaces.note.domain;
 
 import com.startupsdigidojo.virtualspaces.place.domain.ManagePlaces;
 import org.springframework.beans.factory.annotation.Autowired;

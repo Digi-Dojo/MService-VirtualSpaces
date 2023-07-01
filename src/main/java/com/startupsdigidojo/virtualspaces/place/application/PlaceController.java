@@ -52,4 +52,10 @@ public class PlaceController {
     public List<Place> findByType(@PathVariable("type")PlaceTypes type) {
         return searchPlaces.findByType(type);
     }
+
+    @GetMapping("/{id}/type")
+    public PlaceTypes findPlaceType(@PathVariable("id") Long id) {
+        return managePlaces.readPlace(id).getType();
+    }
+
 }

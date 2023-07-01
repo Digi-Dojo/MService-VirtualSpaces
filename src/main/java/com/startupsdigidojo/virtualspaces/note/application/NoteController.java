@@ -55,4 +55,9 @@ public class NoteController {
         return searchNotes.findAll();
     }
 
+    @GetMapping("/getFromPlaceId/{id}")
+    public List<Note> findByPlace(@PathVariable("id") Long id){
+        return searchNotes.findByPlaceId(id);
+    }
+
 }

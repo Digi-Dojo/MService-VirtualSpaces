@@ -2,6 +2,7 @@ package com.startupsdigidojo.virtualspaces.place.application;
 
 import com.startupsdigidojo.virtualspaces.place.domain.ManagePlaces;
 import com.startupsdigidojo.virtualspaces.place.domain.Place;
+import com.startupsdigidojo.virtualspaces.place.domain.PlaceTypes;
 import com.startupsdigidojo.virtualspaces.place.domain.SearchPlaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -46,4 +47,28 @@ public class PlaceController {
     public List<Place> findAll(){
         return searchPlaces.findAll();
     }
+
+    @GetMapping("/getFromType/{type}")
+    public List<Place> findByType(@PathVariable("type")PlaceTypes type) {
+        return searchPlaces.findByType(type);
+    }
+
+    @GetMapping("/getType/{id}")
+    public PlaceTypes findPlaceType(@PathVariable("id") Long id) {
+        return managePlaces.readPlace(id).getType();
+    }
+
+    @GetMapping("/getUsers/{id}")
+    public List<Long> getUsers(@PathVariable("id") Long id) {return managePlaces.readPlace(id).getUsers();}
+
+    @PostMapping("/addUser/{id}/{userId}")
+    public Place addUser(@PathVariable("id") Long id, @PathVariable("userId") Long userId)  {
+        return managePlaces.addUser(id, userId);
+    }
+
+    @DeleteMapping("/removeUser/{id}/{userId}")
+    public Place removeUser(@PathVariable("id") Long id, @PathVariable("userId") Long userId)  {
+        return managePlaces.removeUser(id, userId);
+    }
+
 }

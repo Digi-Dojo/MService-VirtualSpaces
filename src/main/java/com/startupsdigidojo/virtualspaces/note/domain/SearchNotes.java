@@ -27,6 +27,10 @@ public class SearchNotes {
         return searchedNote.get();
     }
 
+    public List<Note> findByPlaceId(Long id) {
+        return noteRepository.findByPlaceId(id);
+    }
+
     public List<Note> findAll(){
         List<Note> list = noteRepository.findAll();
         if(list.isEmpty()){

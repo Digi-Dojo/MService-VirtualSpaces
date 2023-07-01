@@ -2,6 +2,9 @@ package com.startupsdigidojo.virtualspaces.place.domain;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Place {
 
@@ -12,6 +15,9 @@ public class Place {
     private PlaceTypes type;
 
     private Long startupId;
+
+    @ElementCollection
+    private List<Long> users;
 
     public Place () {}
 
@@ -40,6 +46,10 @@ public class Place {
 
     public Long getStartupId() {
         return startupId;
+    }
+
+    public List<Long> getUsers() {
+        return users;
     }
 
     public void setStartupId(Long startupId) {

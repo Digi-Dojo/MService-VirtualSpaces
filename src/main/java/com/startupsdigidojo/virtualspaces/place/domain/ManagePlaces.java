@@ -53,7 +53,11 @@ public class ManagePlaces {
         return place;
 
     }
+/*
+    public Place addUser (Long userId) {
 
+    }
+*/
     public Place updatePlace (Long id, String type, Long startupId) {
 
         Place place = validatePlace(id);

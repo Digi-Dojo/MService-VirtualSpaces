@@ -2,6 +2,7 @@ package com.startupsdigidojo.virtualspaces.place.application;
 
 import com.startupsdigidojo.virtualspaces.place.domain.ManagePlaces;
 import com.startupsdigidojo.virtualspaces.place.domain.Place;
+import com.startupsdigidojo.virtualspaces.place.domain.PlaceTypes;
 import com.startupsdigidojo.virtualspaces.place.domain.SearchPlaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -45,5 +46,10 @@ public class PlaceController {
     @GetMapping("/getAll")
     public List<Place> findAll(){
         return searchPlaces.findAll();
+    }
+
+    @GetMapping("/getFromType/{type}")
+    public List<Place> findByType(@PathVariable("type")PlaceTypes type) {
+        return searchPlaces.findByType(type);
     }
 }

@@ -25,6 +25,10 @@ public class SearchPlaces {
         return searchedPlace.get();
     }
 
+    public List<Place> findByType(PlaceTypes type) {
+        return placeRepository.findByType(type);
+    }
+
     public List<Place> findAll(){
         List<Place> list = placeRepository.findAll();
         if(list.isEmpty()){

@@ -29,6 +29,5 @@ public class NoteCreated extends NoteEvent {
                 "\"time\": \"" + System.currentTimeMillis() + "\"" +
                 "}" +
                 "}";
-
     }
 }

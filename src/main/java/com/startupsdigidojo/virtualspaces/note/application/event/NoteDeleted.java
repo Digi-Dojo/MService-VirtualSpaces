@@ -29,6 +29,5 @@ public class NoteDeleted extends NoteEvent {
                 "\"time\": \"" + System.currentTimeMillis() + "\"" +
                 "}" +
                 "}";
-
     }
 }

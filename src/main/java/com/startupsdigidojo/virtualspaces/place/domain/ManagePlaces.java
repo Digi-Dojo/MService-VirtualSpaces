@@ -71,6 +71,7 @@ public class ManagePlaces {
         place.setStartupId(startupId);
         broadcaster.emitPlaceUpdated(place);
 
+
         return placeRepository.save(place);
     }
 

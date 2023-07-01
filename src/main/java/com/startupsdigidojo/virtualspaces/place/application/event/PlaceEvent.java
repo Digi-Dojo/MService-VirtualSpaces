@@ -11,4 +11,5 @@ public abstract class PlaceEvent {
     @Setter
     @Getter
     protected Object payload;
+
 }

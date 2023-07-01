@@ -33,6 +33,7 @@ public class PlaceProducer implements PlaceBroadcaster {
         PlaceDeleted placeDeleted = new PlaceDeleted(place);
         kafkaTemplate.send("place.deleted", placeDeleted.toJson());
 
+
     }
 
     @Override

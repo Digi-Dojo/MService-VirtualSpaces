@@ -16,6 +16,7 @@ public class PlaceCreated extends PlaceEvent {
         payload = place;
     }
 
+
     public String toJson() {
         return "{" +
                 "\"type\": \"" + type + "\"," +

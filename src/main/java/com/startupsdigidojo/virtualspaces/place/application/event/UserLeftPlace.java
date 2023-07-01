@@ -17,6 +17,7 @@ public class UserLeftPlace {
         payload = place;
     }
 
+
     public String toJson() {
         return "{" +
                 "\"userId\": \"" +"\"," +

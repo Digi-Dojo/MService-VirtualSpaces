@@ -14,6 +14,7 @@ repositories {
 
 extra["springCloudVersion"] = "2022.0.2"
 
+
 dependencies {
 
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")

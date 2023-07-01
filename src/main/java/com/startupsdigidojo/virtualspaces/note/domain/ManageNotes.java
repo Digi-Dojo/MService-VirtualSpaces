@@ -57,7 +57,6 @@ public class ManageNotes {
         try {
              date1 = new SimpleDateFormat("dd/MM/yyyy").parse(date);
         } catch (ParseException e) {
-//            System.out.println("damn");
             throw new IllegalArgumentException("Date " + date + " is not of the format dd/MM/yyyy");
         }
 

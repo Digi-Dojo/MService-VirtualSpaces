@@ -12,6 +12,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 //@Component
 public class PlaceConsumer {
 
+
     @Autowired
     private PlaceRepository placeRepository;
 

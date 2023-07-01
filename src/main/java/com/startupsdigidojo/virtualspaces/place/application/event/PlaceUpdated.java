@@ -16,6 +16,7 @@ public class PlaceUpdated {
         payload = place;
     }
 
+
     public String toJson() {
         return "{" +
                 "\"type\": \"" + type + "\"," +

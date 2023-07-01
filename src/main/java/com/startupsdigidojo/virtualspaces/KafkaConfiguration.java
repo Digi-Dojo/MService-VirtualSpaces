@@ -22,6 +22,7 @@ public class KafkaConfiguration {
     @Value("${spring.kafka.properties.security.protocol}")
     private String securityProtocol;
 
+
     @Bean
     public ProducerFactory<String, String> producerFactory() {
         return new DefaultKafkaProducerFactory<>(Map.of(

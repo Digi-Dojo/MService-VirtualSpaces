@@ -11,4 +11,5 @@ public abstract class NoteEvent {
     @Setter
     @Getter
     protected Object payload;
+
 }

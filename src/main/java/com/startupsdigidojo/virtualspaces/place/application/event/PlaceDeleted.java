@@ -16,6 +16,7 @@ public class PlaceDeleted {
         payload = place;
     }
 
+
     public String toJson() {
         return "{" +
                 "\"type\": \"" + type + "\"," +

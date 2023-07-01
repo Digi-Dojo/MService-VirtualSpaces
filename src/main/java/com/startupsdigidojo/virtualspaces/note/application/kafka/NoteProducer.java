@@ -34,4 +34,5 @@ public class NoteProducer implements NoteBroadcaster {
         NoteDeleted noteRemovedEvent = new NoteDeleted(note);
         kafkaTemplate.send("note.deleted", noteRemovedEvent.toJson());
     }
+
 }

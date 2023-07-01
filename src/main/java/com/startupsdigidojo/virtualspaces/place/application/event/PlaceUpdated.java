@@ -3,24 +3,22 @@ package com.startupsdigidojo.virtualspaces.place.application.event;
 import com.startupsdigidojo.virtualspaces.place.domain.Place;
 import lombok.Getter;
 
-public class UserLeftPlace {
-
-    public static final String USER_LEAVES_PLACE = "User left the place";
+public class PlaceUpdated {
+    public static final String PLACE_UPDATED = "Place deleted";
 
     @Getter
-    private String type = USER_LEAVES_PLACE;
+    private String type = PLACE_UPDATED;
 
     @Getter
     private Place payload;
 
-    public UserLeftPlace(Place place) {
+    public PlaceUpdated(Place place) {
         payload = place;
     }
 
 
     public String toJson() {
         return "{" +
-                "\"userId\": \"" +"\"," +
                 "\"type\": \"" + type + "\"," +
                 "\"payload\": {" +
                 "\"uuid\": \"" + payload.getId() + "\"," +
@@ -29,5 +27,6 @@ public class UserLeftPlace {
                 "\"time\": \"" + System.currentTimeMillis() + "\"" +
                 "}" +
                 "}";
+
     }
 }

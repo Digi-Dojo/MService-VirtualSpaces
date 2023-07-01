@@ -63,6 +63,7 @@ public class ManagePlaces {
         place.setType(typePlace);
         place.setStartupId(startupId);
 
+
         return placeRepository.save(place);
     }
 

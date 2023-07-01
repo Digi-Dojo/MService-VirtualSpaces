@@ -16,6 +16,7 @@ public class UserEnteredPlace {
         payload = place;
     }
 
+
     public String toJson() {
         return "{" +
                 "\"userId\": \"" +"\"," +

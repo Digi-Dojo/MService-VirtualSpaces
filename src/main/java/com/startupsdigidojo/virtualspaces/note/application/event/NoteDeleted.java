@@ -3,22 +3,22 @@ package com.startupsdigidojo.virtualspaces.note.application.event;
 import com.startupsdigidojo.virtualspaces.note.domain.Note;
 import lombok.Getter;
 
-public class NoteCreated extends NoteEvent {
+public class NoteDeleted extends NoteEvent {
 
-    public static final String NOTE_ADDED = "Note added";
+    public static final String NOTE_REMOVED = "Note Removed";
 
     @Getter
-    private String type = NOTE_ADDED;
+    private String type = NOTE_REMOVED;
 
     @Getter
     private Note payload;
 
-    public NoteCreated(Note note) {
+    public NoteDeleted(Note note) {
         payload = note;
     }
 
     public String toJson() {
-        return "{ " +
+        return "{" +
                 "\"type\": \"" + type + "\"," +
                 "\"payload\": {" +
                 "\"uuid\": \"" + payload.getId() + "\"," +

@@ -18,7 +18,7 @@ public class NoteCreated extends NoteEvent {
     }
 
     public String toJson() {
-        return "{" +
+        return "{ " +
                 "\"type\": \"" + type + "\"," +
                 "\"payload\": {" +
                 "\"uuid\": \"" + payload.getId() + "\"," +

@@ -18,6 +18,7 @@ public class UserEnteredPlace {
 
     public String toJson() {
         return "{" +
+                "\"userId\": \"" +"\"," +
                 "\"type\": \"" + type + "\"," +
                 "\"payload\": {" +
                 "\"uuid\": \"" + payload.getId() + "\"," +

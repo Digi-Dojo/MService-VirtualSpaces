@@ -19,6 +19,7 @@ public class UserLeftPlace {
 
     public String toJson() {
         return "{" +
+                "\"userId\": \"" +"\"," +
                 "\"type\": \"" + type + "\"," +
                 "\"payload\": {" +
                 "\"uuid\": \"" + payload.getId() + "\"," +

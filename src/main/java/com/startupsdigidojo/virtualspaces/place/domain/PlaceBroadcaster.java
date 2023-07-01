@@ -6,4 +6,5 @@ public interface PlaceBroadcaster {
     void emitPlaceDeleted(Place place);
     void emitUserEnteredPlace(Place place); //add User
     void emitUserLeftPlace(Place place); //add User
+
 }

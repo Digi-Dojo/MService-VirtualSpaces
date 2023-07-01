@@ -53,9 +53,22 @@ public class PlaceController {
         return searchPlaces.findByType(type);
     }
 
-    @GetMapping("/{id}/type")
+    @GetMapping("/getType/{id}")
     public PlaceTypes findPlaceType(@PathVariable("id") Long id) {
         return managePlaces.readPlace(id).getType();
+    }
+
+    @GetMapping("/getUsers/{id}")
+    public List<Long> getUsers(@PathVariable("id") Long id) {return managePlaces.readPlace(id).getUsers();}
+
+    @PostMapping("/addUser/{id}/{userId}")
+    public Place addUser(@PathVariable("id") Long id, @PathVariable("userId") Long userId)  {
+        return managePlaces.addUser(id, userId);
+    }
+
+    @DeleteMapping("/removeUser/{id}/{userId}")
+    public Place removeUser(@PathVariable("id") Long id, @PathVariable("userId") Long userId)  {
+        return managePlaces.removeUser(id, userId);
     }
 
 }

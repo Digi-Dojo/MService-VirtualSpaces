@@ -24,12 +24,14 @@ public class Place {
     public Place(PlaceTypes type, Long startupId) {
         this.type = type;
         this.startupId = startupId;
+        this.users = new ArrayList<>();
     }
 
     public Place(Long id, PlaceTypes type, Long startupId) {
         this.id = id;
         this.type = type;
         this.startupId = startupId;
+        this.users = new ArrayList<>();
     }
 
     public Long getId() {
@@ -50,6 +52,16 @@ public class Place {
 
     public List<Long> getUsers() {
         return users;
+    }
+
+    public void addUser(Long userId) {
+        this.users.add(userId);
+    }
+
+    public void removeUser(Long userId) {
+        if(this.users.contains(userId)) {
+            users.remove(userId);
+        }
     }
 
     public void setStartupId(Long startupId) {

@@ -53,11 +53,19 @@ public class ManagePlaces {
         return place;
 
     }
-/*
-    public Place addUser (Long userId) {
 
+    public Place addUser (Long id, Long userId) {
+        Place place = readPlace(id);
+        place.addUser(userId);
+        return place;
     }
-*/
+
+    public Place removeUser (Long id, Long userId) {
+        Place place = readPlace(id);
+        place.addUser(userId);
+        return place;
+    }
+
     public Place updatePlace (Long id, String type, Long startupId) {
 
         Place place = validatePlace(id);

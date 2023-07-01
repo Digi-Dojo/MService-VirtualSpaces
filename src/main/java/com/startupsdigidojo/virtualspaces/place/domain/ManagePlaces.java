@@ -56,14 +56,22 @@ public class ManagePlaces {
 
     public Place addUser (Long id, Long userId) {
         Place place = readPlace(id);
-        place.addUser(userId);
-        return place;
+        if(!place.getUsers().contains(userId)) {
+            place.addUser(userId);
+        } else {
+            throw new IllegalArgumentException("User "+ userId+ " is already in this place");
+        }
+        return placeRepository.save(place);
     }
 
     public Place removeUser (Long id, Long userId) {
         Place place = readPlace(id);
-        place.addUser(userId);
-        return place;
+        if(place.getUsers().contains(userId)) {
+            place.removeUser(userId);
+        } else {
+            throw new IllegalArgumentException("User "+ userId+ " not found in Place #" + id);
+        }
+        return placeRepository.save(place);
     }
 
     public Place updatePlace (Long id, String type, Long startupId) {

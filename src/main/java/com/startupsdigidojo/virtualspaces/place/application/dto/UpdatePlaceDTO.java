@@ -1,4 +1,6 @@
-package com.startupsdigidojo.virtualspaces.place.application;
+package com.startupsdigidojo.virtualspaces.place.application.dto;
+
+import com.startupsdigidojo.virtualspaces.place.application.dto.CreatePlaceDTO;
 
 public class UpdatePlaceDTO extends CreatePlaceDTO {
 

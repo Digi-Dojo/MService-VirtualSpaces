@@ -37,14 +37,14 @@ public class PlaceProducer implements PlaceBroadcaster {
     }
 
     @Override
-    public void emitUserEnteredPlace(Place place) { //add User
-        UserEnteredPlace userEnteredPlace = new UserEnteredPlace(place);
+    public void emitUserEnteredPlace(Place place, Long userId) { //add User
+        UserEnteredPlace userEnteredPlace = new UserEnteredPlace(place, userId);
         kafkaTemplate.send("place.user_entered", userEnteredPlace.toJson());
     }
 
     @Override
-    public void emitUserLeftPlace(Place place) { //add User
-        UserLeftPlace userLeftPlace = new UserLeftPlace(place);
+    public void emitUserLeftPlace(Place place, Long userId) { //add User
+        UserLeftPlace userLeftPlace = new UserLeftPlace(place, userId);
         kafkaTemplate.send("place.user_left", userLeftPlace.toJson());
     }
 

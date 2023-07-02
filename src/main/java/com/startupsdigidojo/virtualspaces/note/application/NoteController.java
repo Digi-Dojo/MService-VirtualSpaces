@@ -4,6 +4,8 @@
  */
 package com.startupsdigidojo.virtualspaces.note.application;
 
+import com.startupsdigidojo.virtualspaces.note.application.dto.CreateNoteDTO;
+import com.startupsdigidojo.virtualspaces.note.application.dto.UpdateNoteDTO;
 import com.startupsdigidojo.virtualspaces.note.domain.ManageNotes;
 import com.startupsdigidojo.virtualspaces.note.domain.Note;
 import com.startupsdigidojo.virtualspaces.note.domain.SearchNotes;

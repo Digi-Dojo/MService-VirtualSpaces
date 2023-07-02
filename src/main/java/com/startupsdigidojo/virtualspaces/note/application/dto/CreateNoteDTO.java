@@ -1,4 +1,4 @@
-package com.startupsdigidojo.virtualspaces.note.application;
+package com.startupsdigidojo.virtualspaces.note.application.dto;
 
 public class CreateNoteDTO {
 

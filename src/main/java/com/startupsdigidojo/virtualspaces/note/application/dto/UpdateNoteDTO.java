@@ -1,4 +1,6 @@
-package com.startupsdigidojo.virtualspaces.note.application;
+package com.startupsdigidojo.virtualspaces.note.application.dto;
+
+import com.startupsdigidojo.virtualspaces.note.application.dto.CreateNoteDTO;
 
 public class UpdateNoteDTO extends CreateNoteDTO {
 

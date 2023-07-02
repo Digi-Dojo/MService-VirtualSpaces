@@ -1,10 +1,9 @@
 package com.startupsdigidojo.virtualspaces.place.application.kafka;
 
 
-import com.startupsdigidojo.virtualspaces.place.domain.Place;
-import com.startupsdigidojo.virtualspaces.place.domain.PlaceBroadcaster;
-import com.startupsdigidojo.virtualspaces.place.domain.PlaceRepository;
-import com.startupsdigidojo.virtualspaces.place.domain.PlaceSyncService;
+import com.startupsdigidojo.virtualspaces.place.application.dto.StartupEventDTO;
+import com.startupsdigidojo.virtualspaces.place.application.dto.UserEventDTO;
+import com.startupsdigidojo.virtualspaces.place.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 
@@ -12,47 +11,34 @@ import org.springframework.kafka.annotation.KafkaListener;
 //@Component
 public class PlaceConsumer {
 
+    @Autowired
+    private ManagePlaces managePlaces;
 
     @Autowired
     private PlaceRepository placeRepository;
 
-    @Autowired
-    private PlaceSyncService placeSyncService;
 
     @KafkaListener(
-            topics = "${it.unibz.archlab.digidojo.engagement.kafka.consumer.topics.messages}",
-            groupId = "${it.unibz.archlab.digidojo.engagement.kafka.consumer.group_id}"
+            containerFactory = "noteCreatedEventKafkaListenerContainerFactory",
+            topics = "${com.startupsdigidojo.activitylog.noteEvents.application.kafka.NoteConsumer.topics.startup.created}",
+            groupId = "${com.startupsdigidojo.activitylog.userEvents.application.kafka.consumer.group_id}"
     )
-    public void consume(String jsonMessage) {
-        System.out.println("Received:" + jsonMessage);
+    public void syncStartupCreated(StartupEventDTO startupCreatedEvent){
+        System.out.println(startupCreatedEvent);
+        managePlaces.createPlace("MEETING_ROOM", startupCreatedEvent.getPayload().getId());
+        managePlaces.createPlace("BOARD", startupCreatedEvent.getPayload().getId());
+
     }
 
-
-
-    /* modificare
     @KafkaListener(
-            containerFactory = "postWrittenEventKafkaListenerContainerFactory",
-            topics = "${it.unibz.archlab.digidojo.engagement.kafka.consumer.topics.posts_written}",
-            groupId = "${it.unibz.archlab.digidojo.engagement.kafka.consumer.group_id}"
+            containerFactory = "noteCreatedEventKafkaListenerContainerFactory",
+            topics = "${com.startupsdigidojo.activitylog.noteEvents.application.kafka.NoteConsumer.topics.user.created}",
+            groupId = "${com.startupsdigidojo.activitylog.userEvents.application.kafka.consumer.group_id}"
     )
+    public void syncUserCreated(UserEventDTO userCreatedEvent){
+        System.out.println(userCreatedEvent);
+        Place personalDesk = managePlaces.createPlace("PERSONAL_DESK", -1L);
+        managePlaces.addUser(personalDesk.getId(), userCreatedEvent.getPayload().getId());
 
-    public void syncPostWritten(PostWrittenEvent postWrittenEvent) {
-        PostWrittenEvent.Payload payload = postWrittenEvent.getPayload();
-
-        postSyncService.storePost(payload.getUuid(), payload.getSlug());
     }
-    */
-
-    /*
-    @KafkaListener(
-            containerFactory = "postErasedEventKafkaListenerContainerFactory",
-            topics = "${it.unibz.archlab.digidojo.engagement.kafka.consumer.topics.posts_erased}",
-            groupId = "${it.unibz.archlab.digidojo.engagement.kafka.consumer.group_id}"
-    )
-    public void syncPostErased(PostErasedEvent postErasedEvent) {
-        PostErasedEvent.Payload payload = postErasedEvent.getPayload();
-
-        postSyncService.deletePost(payload.getUuid());
-    }
-    */
 }
